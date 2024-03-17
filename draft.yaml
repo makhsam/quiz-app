@@ -1,0 +1,33 @@
+models:
+  Category:
+    name: string
+
+  Question:
+    category_id: id foreign
+    name: string
+    description: string nullable
+    relationships:
+      hasMany: QuestionOption
+
+  QuestionOption:
+    question_id: id foreign
+    name: string
+    is_correct: boolean default:false
+
+  Task:
+    user_id: id foreign
+    max_score: integer default:0
+    total_score: integer default:0
+    start_time: datetime
+    end_time: datetime nullable
+    relationships:
+      hasMany: TaskAnswer
+
+  TaskAnswer:
+    task_id: id foreign
+    question_id: id foreign
+    option_id: id foreign:question_options
+    score: integer default:0
+
+controllers:
+  # ...
