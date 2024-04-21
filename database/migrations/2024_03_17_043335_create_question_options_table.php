@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
         Schema::create('question_options', function (Blueprint $table) {
             $table->id();
             $table->foreignId('question_id')->constrained();
@@ -20,8 +18,6 @@ return new class extends Migration
             $table->boolean('is_correct')->default(false);
             $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**

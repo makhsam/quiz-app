@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
         Schema::create('task_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained();
@@ -21,8 +19,6 @@ return new class extends Migration
             $table->integer('score')->default(0);
             $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
