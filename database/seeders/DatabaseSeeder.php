@@ -11,6 +11,8 @@ use App\Models\User;
 use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,11 +21,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->generateUsers();
+
         $this->generateQuestions();
 
-        User::factory(15)->create();
-
         $this->generateTasks();
+    }
+
+    protected function generateUsers(): void
+    {
+        $users = json_decode(file_get_contents(database_path('users.json')), true);
+
+        foreach (Arr::shuffle($users) as $user) {
+            User::query()->create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'gender' => $user['gender'],
+                'birthdate' => $user['birthdate'],
+                'email_verified_at' => random_int(0, 1) ? now() : null,
+                'password' => bcrypt('password'),
+                'remember_token' => Str::random(40),
+            ]);
+        }
     }
 
     protected function generateQuestions(): void
@@ -57,7 +76,7 @@ class DatabaseSeeder extends Seeder
 
     protected function generateTasks(): void
     {
-        $tasksCount = 30;
+        $tasksCount = 50;
         $questionsCount = 10;
         $minUserId = User::min('id');
         $maxUserId = User::max('id');

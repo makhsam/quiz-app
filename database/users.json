@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "name": "Muhammad",
+        "email": "muhammad@mail.ru",
+        "gender": "M",
+        "birthdate": "2007-03-15"
+    },
+    {
+        "id": 2,
+        "name": "Mustafo",
+        "email": "mustafo@inbox.ru",
+        "gender": "M",
+        "birthdate": "2007-08-29"
+    },
+    {
+        "id": 3,
+        "name": "Imron",
+        "email": "imron@bk.ru",
+        "gender": "M",
+        "birthdate": "2007-11-07"
+    },
+    {
+        "id": 4,
+        "name": "Ali",
+        "email": "ali@list.ru",
+        "gender": "M",
+        "birthdate": "2007-01-22"
+    },
+    {
+        "id": 5,
+        "name": "Umar",
+        "email": "umar@yandex.ru",
+        "gender": "M",
+        "birthdate": "2007-05-18"
+    },
+    {
+        "id": 6,
+        "name": "Azizbek",
+        "email": "azizbek@gmail.com",
+        "gender": "M",
+        "birthdate": "2007-10-09"
+    },
+    {
+        "id": 7,
+        "name": "Sardor",
+        "email": "sardor@hotmail.com",
+        "gender": "M",
+        "birthdate": "2007-02-11"
+    },
+    {
+        "id": 8,
+        "name": "Abdulloh",
+        "email": "abdulloh@outlook.com",
+        "gender": "M",
+        "birthdate": "2007-09-03"
+    },
+    {
+        "id": 9,
+        "name": "Ibrohim",
+        "email": "ibrohim@yahoo.com",
+        "gender": "M",
+        "birthdate": "2007-04-27"
+    },
+    {
+        "id": 10,
+        "name": "Asadbek",
+        "email": "asadbek@umail.uz",
+        "gender": "M",
+        "birthdate": "2007-06-14"
+    },
+    {
+        "id": 11,
+        "name": "Madina",
+        "email": "madina@mail.ru",
+        "gender": "F",
+        "birthdate": "2007-12-30"
+    },
+    {
+        "id": 12,
+        "name": "Mubina",
+        "email": "mubina@inbox.ru",
+        "gender": "F",
+        "birthdate": "2007-07-21"
+    },
+    {
+        "id": 13,
+        "name": "Muslima",
+        "email": "muslima@bk.ru",
+        "gender": "F",
+        "birthdate": "2007-04-02"
+    },
+    {
+        "id": 14,
+        "name": "Maftuna",
+        "email": "maftuna@list.ru",
+        "gender": "F",
+        "birthdate": "2007-11-28"
+    },
+    {
+        "id": 15,
+        "name": "Imona",
+        "email": "imona@yandex.ru",
+        "gender": "F",
+        "birthdate": "2007-08-05"
+    },
+    {
+        "id": 16,
+        "name": "Soliha",
+        "email": "soliha@gmail.com",
+        "gender": "F",
+        "birthdate": "2007-01-09"
+    },
+    {
+        "id": 17,
+        "name": "Aziza",
+        "email": "aziza@hotmail.com",
+        "gender": "F",
+        "birthdate": "2007-10-26"
+    },
+    {
+        "id": 18,
+        "name": "Sevinch",
+        "email": "sevinch@outlook.com",
+        "gender": "F",
+        "birthdate": "2007-05-03"
+    },
+    {
+        "id": 19,
+        "name": "Sabina",
+        "email": "sabina@yahoo.com",
+        "gender": "F",
+        "birthdate": "2007-03-19"
+    },
+    {
+        "id": 20,
+        "name": "Marjona",
+        "email": "marjona@umail.uz",
+        "gender": "F",
+        "birthdate": "2007-09-11"
+    }
+]
