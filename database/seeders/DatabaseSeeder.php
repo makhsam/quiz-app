@@ -21,12 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->generateQuestions();
 
-        User::factory(10)->create();
-        // Category::factory(10)->create();
-        // Question::factory(50)->create();
-        // QuestionOption::factory(150)->create();
-        // Task::factory(10)->create();
-        // TaskAnswer::factory(50)->create();
+        User::factory(15)->create();
 
         $this->generateTasks();
     }
@@ -62,11 +57,19 @@ class DatabaseSeeder extends Seeder
 
     protected function generateTasks(): void
     {
+        $tasksCount = 30;
         $questionsCount = 10;
+        $minUserId = User::min('id');
+        $maxUserId = User::max('id');
+        $userIds = [];
 
-        foreach (User::all() as $user) {
+        for ($i = 0; $i < $tasksCount; $i++) {
+            $userIds[$i] = mt_rand($minUserId, $maxUserId);
+        }
+
+        foreach ($userIds as $key => $userId) {
             $task = Task::query()->create([
-                'user_id' => $user->id,
+                'user_id' => $userId,
                 'max_score' => $questionsCount,
                 'total_score' => 0,
                 'start_time' => Carbon::now(),
@@ -76,7 +79,7 @@ class DatabaseSeeder extends Seeder
             $questions = Question::inRandomOrder()->limit($questionsCount)->get();
 
             foreach ($questions as $question) {
-                if ($question->id % 2 == 0 || $user->id % 5 == 0) {
+                if ($question->id % 2 == 0 || $key % 5 == 0) {
                     $option = $question->options()->where('is_correct', 1)->first();
                 } else {
                     $option = $question->options()->inRandomOrder()->first();
