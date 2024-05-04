@@ -16,6 +16,7 @@ class QuestionOption extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'question_id',
         'name',
         'is_correct',
