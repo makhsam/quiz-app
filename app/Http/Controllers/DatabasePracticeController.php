@@ -120,8 +120,85 @@ class DatabasePracticeController extends Controller
         return $questions;
     }
 
+    /**
+     * Display list of tasks with max score.
+     */
     public function practice7()
     {
-        return view('table', $this->data());
+        $tasks = DB::table('tasks')
+            ->selectRaw('user_id, MAX(total_score) AS max_user_score')
+            ->addSelect([
+                'user_name' => DB::table('users')
+                    ->select('name')
+                    ->whereColumn('users.id', 'tasks.user_id'),
+
+                // 'user_email' => DB::table('users')
+                //     ->select('email')
+                //     ->whereColumn('users.id', 'tasks.user_id')
+            ])
+            ->groupBy('user_id')
+            ->orderByDesc('max_user_score')
+            ->get();
+
+        return view('table', $this->data($tasks));
+    }
+
+    /**
+     * List users who have born in November, 2007
+     * id, name, birthdate
+     */
+    public function practice8()
+    {
+        $users = DB::table('users')
+            ->select('id', 'name', 'birthdate')
+            // ->whereDate('birthdate', '2007-11-28')
+            ->whereYear('birthdate', 2007)
+            ->whereMonth('birthdate', 11)
+            ->get();
+
+        return view('table', $this->data($users));
+    }
+
+    /**
+     * List number of verified and not verified users
+     */
+    public function practice9()
+    {
+        $verifiedCount = DB::table('users')
+            ->whereNotNull('email_verified_at') // where `email_verified_at` is not null
+            ->count();
+
+        $notVerifiedCount = DB::table('users')
+            ->whereNull('email_verified_at')    // where `email_verified_at` is null
+            ->count();
+
+        return [
+            'email_verified_count' => $verifiedCount,
+            'email_not_verified_count' => $notVerifiedCount,
+        ];
+    }
+
+    /**
+     * Display youngest and oldest users
+     */
+    public function practice10()
+    {
+        DB::table('users')->max('birthdate'); // youngest
+        DB::table('users')->min('birthdate'); // oldest
+
+        $youngestUser = DB::table('users')
+            ->select('id', 'name', 'birthdate')
+            ->latest('birthdate') // order by `birthdate` desc
+            ->first();
+
+        $oldestUser = DB::table('users')
+            ->select('id', 'name', 'birthdate')
+            ->oldest('birthdate') // order by `birthdate` asc
+            ->first();
+
+        return [
+            'youngest_user' => $youngestUser,
+            'oldest_user' => $oldestUser,
+        ];
     }
 }

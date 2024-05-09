@@ -14,3 +14,6 @@ Route::get('database/practice/4', [DatabasePracticeController::class, 'practice4
 Route::get('database/practice/5', [DatabasePracticeController::class, 'practice5']);
 Route::get('database/practice/6', [DatabasePracticeController::class, 'practice6']);
 Route::get('database/practice/7', [DatabasePracticeController::class, 'practice7']);
+Route::get('database/practice/8', [DatabasePracticeController::class, 'practice8']);
+Route::get('database/practice/9', [DatabasePracticeController::class, 'practice9']);
+Route::get('database/practice/10', [DatabasePracticeController::class, 'practice10']);
