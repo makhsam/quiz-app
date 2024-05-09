@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -72,19 +73,51 @@ class DatabasePracticeController extends Controller
         return view('table', $this->data($questions));
     }
 
+    /**
+     * 1. Get number of questions in category "Mathematics"
+     */
     public function practice4()
     {
-        return view('table', $this->data());
+        $category = DB::table('categories')->where('id', 1)->first();
+
+        $questionsCount = DB::table('questions')
+            ->where('category_id', $category->id)
+            ->count();
+
+        return [
+            'category_name' => $category->name,
+            'questions_count' => $questionsCount,
+        ];
     }
 
+    /**
+     * 2. Get list of categories with questions_count
+     */
     public function practice5()
     {
-        return view('table', $this->data());
+        $categories = DB::table('categories')
+            ->select('name')
+            ->addSelect([
+                'questions_count' => DB::table('questions')
+                    ->selectRaw('COUNT(*)')
+                    ->whereColumn('questions.category_id', 'categories.id')
+            ])
+            ->get();
+
+        return $categories;
     }
 
+    /**
+     * 3. Get list of questions with options in "Geography" category
+     */
     public function practice6()
     {
-        return view('table', $this->data());
+        $questions = Question::with('options:id,question_id,name')
+            ->select('id', 'name')
+            ->where('category_id', 5)
+            ->get();
+
+        return $questions;
     }
 
     public function practice7()
