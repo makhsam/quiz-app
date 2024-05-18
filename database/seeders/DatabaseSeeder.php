@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Login;
 use App\Models\Question;
 use App\Models\QuestionOption;
 use App\Models\Task;
@@ -26,6 +27,12 @@ class DatabaseSeeder extends Seeder
         $this->generateQuestions();
 
         $this->generateTasks();
+
+        $users = User::all();
+
+        Login::factory(1000)
+            ->recycle($users)
+            ->create();
     }
 
     protected function generateUsers(): void

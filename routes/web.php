@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DatabasePracticeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,3 +18,6 @@ Route::get('database/practice/7', [DatabasePracticeController::class, 'practice7
 Route::get('database/practice/8', [DatabasePracticeController::class, 'practice8']);
 Route::get('database/practice/9', [DatabasePracticeController::class, 'practice9']);
 Route::get('database/practice/10', [DatabasePracticeController::class, 'practice10']);
+
+Route::get('users/example1', [UserController::class, 'index1']);
+Route::get('users/example2', [UserController::class, 'index2']);
